@@ -56,3 +56,123 @@ bun create next-app@latest my-next-app
 Run 
 cd my-next-app
 bun dev
+
+# Folder Structur -----------------------------------------------------------------------------------------------------
+
+ // TODO:
+
+ # 📂 Next.js 2025 Folder Structure (App Router Based)
+
+> 🧠 This guide explains the **latest Next.js folder structure (v13–v15)** using the **App Router** system — the recommended approach for 2025 and beyond.
+
+---
+
+## ⚙️ Overview
+
+Next.js App Router allows you to:
+- Build **fullstack React apps** (frontend + backend)
+- Use **Server Components** for fast performance
+- Implement **SEO-optimized** pages automatically
+- Create **file-based routing** (no need for React Router)
+- Deploy instantly with **Vercel**
+
+---
+
+## 🏗️ Recommended Folder Structure
+
+my-nextjs-app/
+├── .next/ # Auto-generated build files (don't edit)
+├── node_modules/ # Dependencies
+├── public/ # Public assets (images, icons, etc.)
+│ └── favicon.ico
+├── src/ # Source folder (recommended)
+│ ├── app/ # ⚡ Core App Router folder
+│ │ ├── layout.tsx # Root layout (Navbar, Footer, etc.)
+│ │ ├── page.tsx # Home page (/)
+│ │ ├── about/ # Static route (/about)
+│ │ │ └── page.tsx
+│ │ ├── blog/
+│ │ │ ├── page.tsx # /blog route
+│ │ │ └── [id]/page.tsx # Dynamic route (/blog/1)
+│ │ ├── api/ # ✅ API routes (Backend endpoints)
+│ │ │ └── users/route.ts # Example API route (/api/users)
+│ │ ├── loading.tsx # Global loading state
+│ │ ├── error.tsx # Custom error UI
+│ │ └── not-found.tsx # Custom 404 page
+│ │
+│ ├── components/ # Reusable UI components
+│ │ ├── Navbar.tsx
+│ │ └── Footer.tsx
+│ │
+│ ├── lib/ # Helper functions, configs, utilities
+│ │ └── db.ts
+│ │
+│ ├── styles/ # Global & Tailwind CSS setup
+│ │ └── globals.css
+│ │
+│ ├── hooks/ # Custom React hooks
+│ │ └── useTheme.ts
+│ │
+│ ├── types/ # TypeScript types & interfaces
+│ │ └── user.ts
+│ │
+│ └── middleware.ts # Route protection, redirects, etc.
+│
+├── .env.local # Environment variables
+├── .gitignore
+├── next.config.ts # Next.js configuration file
+├── package.json
+├── tailwind.config.ts # Tailwind CSS configuration
+├── tsconfig.json # TypeScript configuration
+└── README.md
+
+markdown
+Copy code
+
+---
+
+## 📘 Folder-by-Folder Explanation
+
+| Folder/File | Description |
+|--------------|-------------|
+| **app/** | Core folder for all routes, layouts, pages, and API endpoints |
+| **layout.tsx** | Shared layout (e.g. navbar/footer) used across routes |
+| **page.tsx** | Defines a page (like `/index.html`) for that route |
+| **loading.tsx** | Displays while server data is loading |
+| **error.tsx** | Error handling for the route |
+| **not-found.tsx** | Custom 404 page |
+| **api/** | Create backend endpoints directly inside Next.js |
+| **components/** | Reusable UI elements (Buttons, Navbar, Cards, etc.) |
+| **lib/** | Utilities like API helpers, DB config, constants |
+| **styles/** | Global CSS and Tailwind setup |
+| **hooks/** | Custom React hooks |
+| **types/** | TypeScript interfaces and types |
+| **middleware.ts** | Logic for authentication, redirects, etc. |
+| **public/** | Publicly accessible static files (images, icons, etc.) |
+
+---
+
+## 🌐 Routing System Example
+
+| Folder Path | Generated URL | Type |
+|--------------|---------------|------|
+| `app/page.tsx` | `/` | Home Page |
+| `app/about/page.tsx` | `/about` | Static Route |
+| `app/blog/page.tsx` | `/blog` | Blog Listing Page |
+| `app/blog/[id]/page.tsx` | `/blog/123` | Dynamic Route |
+| `app/api/users/route.ts` | `/api/users` | API Endpoint |
+
+---
+
+## 🚀 Latest Features Included (Next.js 15)
+
+✅ **App Router** (no more `pages/` folder)  
+✅ **Server Components** (fetch data directly in components)  
+✅ **Dynamic Metadata** via `generateMetadata()`  
+✅ **Loading & Error States** (`loading.js`, `error.js`)  
+✅ **Incremental Static Regeneration (ISR)**  
+✅ **Server Actions** (form handling without API routes)  
+✅ **Edge & Serverless Functions**  
+✅ **Middleware-based Auth & Redirects**  
+✅ **`next/image` & `next/font` optimization**  
+✅ **Vercel Edge Deployment Support**
